@@ -1,0 +1,248 @@
+html,
+body {
+  width: calc(100% + calc(100vw - 100%));
+  overflow-x: hidden;
+  font-family: sans-serif;
+  font-size: 1.41665vw;
+  position: relative;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+li {
+  list-style-type: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+  font: inherit;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+/*3D-card*/
+.wrap_3d {
+  position: relative;
+  width: 100%;
+  height: 50vh;
+  background-color: lime;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  perspective: 1000px;
+}
+
+.front,
+.back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 1s ease;
+  backface-visibility: hidden;
+  border-radius: 10px;
+}
+
+.front {
+  background-color: #fff;
+}
+
+.back {
+  background-color: lightgray;
+  transform: rotateY(180deg);
+}
+
+.card:hover .front {
+  transform: rotateY(180deg);
+}
+
+.card:hover .back {
+  transform: rotateY(360deg);
+}
+/*Адаптиная верстка*/
+.section {
+  background-color: #f2395a;
+  color: #fff;
+  height: 100vh;
+  padding-top: 20px;
+  text-align: right;
+  position: relative;
+  perspective: 1000px;
+}
+
+.heading {
+  margin-right: 10%;
+}
+
+.phone,
+.tablet,
+.desctop {
+  background-color: #fff;
+  box-shadow: 13px 13px 32px 0 rgba(242, 57, 90, 0.3);
+  position: absolute;
+  transition: all 1s ease;
+  transform: translateY(100%);
+}
+
+.section:hover .phone,
+.section:hover .tablet,
+.section:hover .desctop {
+  transform: translateY(10px) rotateY(-15deg);
+}
+
+.phone {
+  width: 200px;
+  height: 280px;
+  left: 5%;
+  bottom: 0;
+  background: #fff url("../../assets/images/mobile.svg") center no-repeat;
+  z-index: 3;
+  transition-delay: 0.2s;
+}
+
+.tablet {
+  width: 360px;
+  height: 380px;
+  background: #fff url("../../assets/images/tablet.svg");
+  bottom: 0;
+  left: 10%;
+  z-index: 1;
+  transition-delay: 0.4s;
+}
+
+.desctop {
+  width: 680px;
+  height: 480px;
+  background: #fff url("../../assets/images/desktop.svg");
+  bottom: 0;
+  left: 15%;
+  transition-delay: 0.6s;
+}
+/*mani card*/
+.mani_card {
+  background-color: #3d385a;
+  margin-top: 480px;
+  perspective: 1000px;
+  .container {
+    width: 680px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    allign-items: center;
+    flex-wrap: wrap;
+    height: 100vh;
+    transition: all 1s ease;
+    transform: rotateX(55deg) rotateY(10deg) rotateZ(-45deg);
+    transform-style: preserve-3d;
+    .card {
+      width: 200px;
+      margin: 10px;
+      transition: all 0.3s ease;
+    }
+    .card:hover {
+      cursor: pointer;
+      transform: translateZ(10px);
+    }
+  }
+  .container_origin {
+    transform: rotate(0);
+  }
+}
+/*hamburger-menu*/
+.hamburger {
+  height: 100vh;
+  background-color: #7b1fa2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .menu-btn {
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: relative;
+  }
+  span,
+  span::before,
+  span::after {
+    position: absolute;
+    top: 50%;
+    margin-top: -1px;
+    left: 50%;
+    margin-left: -10px;
+    width: 20px;
+    height: 2px;
+    background-color: #222;
+  }
+  span::before,
+  span::after {
+    content: "";
+    display: block;
+    transition: all 0.2s ease;
+  }
+  span::before {
+    transform: translateY(-5px);
+  }
+  span::after {
+    transform: translateY(5px);
+  }
+  /*сделать крест из hamburger*/
+  /*.menu-btn_active span {
+    height: 0;
+  }
+  .menu-btn_active span::before {
+    transform: rotate(45deg);
+  }
+  .menu-btn_active span::after {
+    transform: rotate(-45deg);
+  }*/
+  /*или сделать стрелку*/
+  .menu-btn_active span::before {
+    transform: rotate(35deg);
+    width: 10px;
+    transform-origin: left bottom;
+  }
+  .menu-btn_active span::after {
+    transform: rotate(-35deg);
+    width: 10px;
+    transform-origin: left top;
+  }
+}
